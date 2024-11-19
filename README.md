@@ -1,8 +1,8 @@
 # comtypes_key_error_1_4_8
 https://github.com/enthought/comtypes/issues/668
 
-Steps to reproduce
-Install HeidenhainDNC.msi
+Steps to reproduce:\
+Install HeidenhainDNC.msi\
 Run key_error.py
 
 Exception occurs in line 
