@@ -1,0 +1,1 @@
+comtypes @ git+https://github.com/davidschranz/comtypes@main

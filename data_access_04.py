@@ -12,9 +12,11 @@ ppsafLockResults = jjhdataaccess.LockConfig(bstrIdentsToLock)
 Returns _ctypes.COMError: (-2147024809, 'The parameter is incorrect.', (None, None, None, 0, None))
 
 Wrapping the HeidenhainDNCLib will fail (comtypes.client.GetModule) if VT_HRESULT does not exit.
+
+_ctype_to_vartype.update not necessary if using https://github.com/davidschranz/comtypes.git
 """
-from comtypes.automation import _ctype_to_vartype, HRESULT, VT_HRESULT
-_ctype_to_vartype.update({HRESULT: VT_HRESULT})
+# from comtypes.automation import _ctype_to_vartype, HRESULT, VT_HRESULT
+# _ctype_to_vartype.update({HRESULT: VT_HRESULT})
 
 import comtypes.client
 comtypes.client.GetModule((comtypes.GUID("{14B95319-AEF9-492A-A878-CA18FEB1F5BF}"), 1, 7))
@@ -32,7 +34,7 @@ jjhdataaccess.SetAccessMode(HeidenhainDNCLib.DNC_ACCESS_MODE_PLCDATAACCESS, '807
 entry = r"\PLC\memory\M\0"
 ijhdataentry = jjhdataaccess.GetDataEntry2(entry, HeidenhainDNCLib.DNC_DATA_UNIT_SELECT_METRIC, False)
 value = ijhdataentry.GetPropertyValue(HeidenhainDNCLib.DNC_DATAENTRY_PROPKIND_DATA)
-ijhdataentry.SetPropertyValue(HeidenhainDNCLib.DNC_DATAENTRY_PROPKIND_DATA, not(value), False)
+# ijhdataentry.SetPropertyValue(HeidenhainDNCLib.DNC_DATAENTRY_PROPKIND_DATA, not(value), False)
 print(value)
 
 del ijhdataentry
